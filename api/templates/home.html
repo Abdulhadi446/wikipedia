@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Wiki App</title>
+    <Style>
+        /* General page layout */
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main {
+    flex: 1; /* Allows the main content to take up the available space */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 16px;
+}
+
+footer a {
+    color: #ffcc00; /* Link color */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+    </Style>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Wiki App</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/create">Create Article</a>
+            <a href="/all_articles">View all Article</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Search for an Article</h2>
+            <form id="search-form">
+                <input type="text" id="search-input" name="title" placeholder="Enter article title" required>
+                <button id="submit" type="submit">Search</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Wiki App | Built with FastAPI</p>
+    </footer>
+
+    <script>
+        // Function to update the URL without reloading the page
+        function addURL(title) {
+            const newUrl = `/article/${title}`;
+            // Push the new URL to the browser history
+            window.history.pushState({ path: newUrl }, '', newUrl);
+        }
+        
+        // Handle the search form submission
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();  // Prevent the form from submitting in the default way
+            const title = document.getElementById('search-input').value.trim();
+            if (title) {
+                addURL(title);  // Change URL and fetch the article
+                location.reload();
+            }
+        });
+    </script>
+
+</body>
+</html>

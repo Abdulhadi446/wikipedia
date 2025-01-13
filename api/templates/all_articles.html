@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Articles - Wiki App</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <Style>
+        /* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 16px;
+}
+
+footer a {
+    color: #ffcc00; /* Link color */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+    </Style>
+</head>
+<body>
+    <header>
+        <h1>All Articles</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/create">Create Article</a>
+            <a href="/">Back to Home</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Articles List</h2>
+            <ul id="articles-list">
+                {% for article in articles %}
+                    <li>
+                        <a href="/article/{{ article.title }}">{{ article.title }}</a>
+                    </li>
+                {% else %}
+                    <li>No articles available.</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Wiki App | Built with FastAPI</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} - Wiki App</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/create">Create Article</a>
+            <a href="/all_articles">All Articles</a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Article Content</h2>
+            <p>{{ content }}</p>
+            
+            <!-- Add the delete button -->
+            <form action="/delete/{{ title }}" method="post" onsubmit="return confirm('Are you sure you want to delete this article?');">
+                <button type="submit">Delete Article</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Wiki App | Built with FastAPI</p>
+    </footer>
+</body>
+</html>
