@@ -1,7 +1,1 @@
-fastapi
-jinja2
-sqlalchemy
-databases
-wikipedia-api
-uvicorn
-wikipedia
+fastapi jinja2 sqlalchemy databases wikipedia-api uvicorn wikipedia
